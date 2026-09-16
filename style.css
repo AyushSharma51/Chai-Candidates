@@ -1,0 +1,758 @@
+:root {
+
+    --cream: #f4e8cf;
+    --paper: #ead9b8;
+    --brown: #3b2418;
+    --dark-brown: #25150e;
+    --orange: #b85c2c;
+    --muted: #806652;
+
+}
+
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+body {
+
+    min-height: 100vh;
+
+    background:
+        radial-gradient(
+            circle at 50% 30%,
+            #f8edd8 0%,
+            var(--cream) 55%,
+            #ddc49d 100%
+        );
+
+    color: var(--brown);
+
+    font-family: "DM Mono", monospace;
+
+}
+
+
+button,
+input,
+select {
+
+    font-family: inherit;
+
+}
+
+
+button {
+
+    cursor: pointer;
+
+}
+
+
+/* -------------------------
+   SCREEN
+------------------------- */
+
+.screen {
+
+    display: none;
+
+    min-height: 100vh;
+
+    padding: 30px;
+
+    animation: slideIn 0.45s ease;
+
+}
+
+
+.screen.active {
+
+    display: block;
+
+}
+
+
+@keyframes slideIn {
+
+    from {
+
+        opacity: 0;
+        transform: translateX(25px);
+
+    }
+
+    to {
+
+        opacity: 1;
+        transform: translateX(0);
+
+    }
+
+}
+
+
+/* -------------------------
+   LANDING
+------------------------- */
+
+.hero {
+
+    min-height: calc(100vh - 60px);
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+}
+
+
+.chai-icon {
+
+    font-size: 60px;
+
+    margin-bottom: 20px;
+
+    animation: float 3s ease-in-out infinite;
+
+}
+
+
+@keyframes float {
+
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
+
+}
+
+
+.eyebrow {
+
+    font-size: 11px;
+
+    letter-spacing: 3px;
+
+    color: var(--muted);
+
+    margin-bottom: 15px;
+
+}
+
+
+h1 {
+
+    font-family: "Playfair Display", serif;
+
+    font-size: clamp(60px, 13vw, 130px);
+
+    line-height: 0.85;
+
+    letter-spacing: -5px;
+
+}
+
+
+h1 span {
+
+    color: var(--orange);
+
+}
+
+
+.tagline {
+
+    margin-top: 28px;
+
+    font-size: 18px;
+
+}
+
+
+.main-button {
+
+    margin-top: 35px;
+
+    padding: 17px 30px;
+
+    border: 2px solid var(--brown);
+
+    background: var(--brown);
+
+    color: var(--cream);
+
+    font-size: 14px;
+
+    letter-spacing: 2px;
+
+    transition: 0.25s;
+
+    box-shadow: 6px 6px 0 var(--orange);
+
+}
+
+
+.main-button:hover {
+
+    transform: translate(3px, 3px);
+
+    box-shadow: 3px 3px 0 var(--orange);
+
+}
+
+
+.small-text {
+
+    margin-top: 25px;
+
+    color: var(--muted);
+
+    font-size: 11px;
+
+}
+
+
+/* -------------------------
+   SECTIONS
+------------------------- */
+
+.section-container {
+
+    max-width: 720px;
+
+    margin: 80px auto;
+
+}
+
+
+h2 {
+
+    font-family: "Playfair Display", serif;
+
+    font-size: clamp(42px, 8vw, 72px);
+
+    line-height: 1;
+
+}
+
+
+.subtitle {
+
+    margin-top: 15px;
+
+    color: var(--muted);
+
+}
+
+
+/* -------------------------
+   BACK
+------------------------- */
+
+.back-button {
+
+    border: none;
+
+    background: transparent;
+
+    color: var(--muted);
+
+    font-size: 11px;
+
+    letter-spacing: 1px;
+
+}
+
+
+.back-button:hover {
+
+    color: var(--brown);
+
+}
+
+
+/* -------------------------
+   CHAI OPTIONS
+------------------------- */
+
+.chai-options {
+
+    display: grid;
+
+    gap: 15px;
+
+    margin-top: 45px;
+
+}
+
+
+.chai-card {
+
+    width: 100%;
+
+    display: grid;
+
+    grid-template-columns: 65px 1fr auto;
+
+    align-items: center;
+
+    text-align: left;
+
+    padding: 22px;
+
+    background: rgba(255,255,255,0.25);
+
+    border: 1px solid #b99c72;
+
+    color: var(--brown);
+
+    transition: 0.25s;
+
+}
+
+
+.chai-card:hover {
+
+    transform: translateX(8px);
+
+    background: var(--paper);
+
+}
+
+
+.card-icon {
+
+    font-size: 35px;
+
+}
+
+
+.chai-card h3 {
+
+    font-family: "Playfair Display", serif;
+
+    font-size: 22px;
+
+}
+
+
+.chai-card p {
+
+    margin-top: 5px;
+
+    font-size: 11px;
+
+    color: var(--muted);
+
+}
+
+
+.arrow {
+
+    font-size: 25px;
+
+}
+
+
+/* -------------------------
+   ORDER PAGE
+------------------------- */
+
+.session-header {
+
+    margin-bottom: 35px;
+
+}
+
+
+.date {
+
+    margin-top: 12px;
+
+    font-size: 12px;
+
+    color: var(--muted);
+
+}
+
+
+/* -------------------------
+   LIST
+------------------------- */
+
+.chai-list-section {
+
+    border-top: 2px solid var(--brown);
+
+}
+
+
+.list-heading {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    padding: 14px 0;
+
+    font-size: 11px;
+
+    letter-spacing: 1px;
+
+}
+
+
+.order-list {
+
+    border-bottom: 2px solid var(--brown);
+
+}
+
+
+.person-row {
+
+    display: grid;
+
+    grid-template-columns: 45px 1fr auto;
+
+    align-items: center;
+
+    padding: 15px 5px;
+
+    border-top: 1px solid #c5ab83;
+
+}
+
+
+.person-number {
+
+    font-size: 11px;
+
+    color: var(--muted);
+
+}
+
+
+.person-name {
+
+    font-family: "Playfair Display", serif;
+
+    font-size: 19px;
+
+}
+
+
+.payment-status {
+
+    border: none;
+
+    cursor: pointer;
+
+    font-size: 10px;
+
+    padding: 5px 8px;
+
+    font-family: inherit;
+
+    transition: 0.2s;
+
+}
+
+
+.payment-status.paid {
+
+    color: #356b42;
+
+    background: #dce9d9;
+
+}
+
+
+.payment-status.unpaid {
+
+    color: #8b3f2d;
+
+    background: #efd8d0;
+
+}
+
+
+.payment-status:hover {
+
+    opacity: 0.75;
+
+    transform: scale(1.03);
+
+}
+
+/* -------------------------
+   ADD
+------------------------- */
+
+.add-section {
+
+    margin-top: 45px;
+
+}
+
+
+.add-section h3 {
+
+    font-family: "Playfair Display", serif;
+
+    font-size: 25px;
+
+    margin-bottom: 15px;
+
+}
+
+
+.input-row {
+
+    display: grid;
+
+    grid-template-columns: 1fr 130px;
+
+    gap: 10px;
+
+}
+
+
+input,
+select {
+
+    padding: 14px;
+
+    border: 1px solid #b99c72;
+
+    background: rgba(255,255,255,0.35);
+
+    color: var(--brown);
+
+    outline: none;
+
+}
+
+
+input:focus {
+
+    border-color: var(--brown);
+
+}
+
+
+.add-button {
+
+    width: 100%;
+
+    margin-top: 10px;
+
+    padding: 15px;
+
+    background: var(--orange);
+
+    color: white;
+
+    border: none;
+
+    letter-spacing: 1px;
+
+}
+
+
+/* -------------------------
+   PAYMENT
+------------------------- */
+
+.payment-card {
+
+    margin-top: 60px;
+
+    padding: 25px;
+
+    border: 2px solid var(--brown);
+
+    background: var(--paper);
+
+}
+
+
+.payment-title {
+
+    display: flex;
+
+    gap: 15px;
+
+    align-items: center;
+
+}
+
+
+.payment-title > span {
+
+    font-size: 35px;
+
+}
+
+
+.payment-title h3 {
+
+    font-family: "Playfair Display", serif;
+
+    font-size: 25px;
+
+}
+
+
+.payment-content {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 30px;
+
+    margin-top: 25px;
+
+}
+
+
+.collector-label {
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+
+    color: var(--muted);
+
+}
+
+
+.collector-info h3 {
+
+    margin-top: 7px;
+
+    font-family: "Playfair Display", serif;
+
+    font-size: 25px;
+
+}
+
+
+.collector-info > p:not(.collector-label) {
+
+    margin-top: 5px;
+
+    color: var(--muted);
+
+}
+
+
+.upi-button {
+
+    margin-top: 18px;
+
+    padding: 10px 15px;
+
+    border: 1px solid var(--brown);
+
+    background: transparent;
+
+    color: var(--brown);
+
+    font-size: 10px;
+
+}
+
+
+.qr-placeholder {
+
+    width: 130px;
+
+    height: 130px;
+
+    border: 2px dashed var(--brown);
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+}
+
+
+.qr-placeholder span {
+
+    font-family: "Playfair Display", serif;
+
+    font-size: 20px;
+
+}
+
+
+/* -------------------------
+   MOBILE
+------------------------- */
+
+@media (max-width: 600px) {
+
+    .screen {
+
+        padding: 20px;
+
+    }
+
+
+    .section-container {
+
+        margin: 60px auto;
+
+    }
+
+
+    h1 {
+
+        letter-spacing: -3px;
+
+    }
+
+
+    .input-row {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .payment-content {
+
+        align-items: flex-start;
+
+    }
+
+
+    .qr-placeholder {
+
+        width: 100px;
+
+        height: 100px;
+
+    }
+
+}

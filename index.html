@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Chai Candidates ☕</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- LANDING PAGE -->
+    <main id="home" class="screen active">
+
+        <div class="grain"></div>
+
+        <div class="hero">
+
+            <div class="chai-icon">☕</div>
+
+            <p class="eyebrow">OFFICE CHAI CLUB • EST. 2026</p>
+
+            <h1>
+                CHAI<br>
+                <span>CANDIDATES</span>
+            </h1>
+
+            <p class="tagline">
+                ਚਾਹ ਦਾ ਟਾਈਮ ਹੋ ਗਿਆ?
+            </p>
+
+            <button class="main-button" onclick="showScreen('selection')">
+                LET'S CHAI <span>☕</span>
+            </button>
+
+            <p class="small-text">
+                One office. One chai list.
+            </p>
+
+        </div>
+
+    </main>
+
+
+    <!-- CHAI SELECTION -->
+    <main id="selection" class="screen">
+
+        <button class="back-button" onclick="showScreen('home')">
+            ← BACK
+        </button>
+
+        <div class="section-container">
+
+            <p class="eyebrow">TODAY'S MENU</p>
+
+            <h2>What's the scene?</h2>
+
+            <p class="subtitle">
+                Pick your chai session.
+            </p>
+
+
+            <div class="chai-options">
+
+                <button class="chai-card" onclick="openChai('morning')">
+
+                    <div class="card-icon">🌅</div>
+
+                    <div>
+                        <h3>SAVERE DI CHA</h3>
+                        <p>Morning Tea</p>
+                    </div>
+
+                    <span class="arrow">→</span>
+
+                </button>
+
+
+                <button class="chai-card" onclick="openChai('evening')">
+
+                    <div class="card-icon">🌆</div>
+
+                    <div>
+                        <h3>SHAAM DI CHA</h3>
+                        <p>Evening Tea</p>
+                    </div>
+
+                    <span class="arrow">→</span>
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <!-- ORDER PAGE -->
+    <main id="orders" class="screen">
+
+        <button class="back-button" onclick="showScreen('selection')">
+            ← CHAI MENU
+        </button>
+
+        <div class="section-container">
+
+            <div class="session-header">
+
+                <p class="eyebrow" id="session-label">
+                    SAVERE DI CHA
+                </p>
+
+                <h2 id="session-title">
+                    Morning Chai
+                </h2>
+
+                <p class="date" id="today-date"></p>
+
+            </div>
+
+
+            <!-- ORDER LIST -->
+
+            <section class="chai-list-section">
+
+                <div class="list-heading">
+                    <span>☕ CHAI LIST</span>
+                    <span id="people-count">0 PEOPLE</span>
+                </div>
+
+                <div id="order-list" class="order-list">
+
+                    <!-- Javascript will insert people here -->
+
+                </div>
+
+            </section>
+
+
+            <!-- ADD PERSON -->
+
+            <section class="add-section">
+
+                <h3>Joining the chai?</h3>
+
+                <div class="input-row">
+
+                    <input
+                        type="text"
+                        id="name-input"
+                        placeholder="Your name..."
+                        maxlength="30"
+                    >
+
+                    <select id="payment-input">
+
+                        <option value="unpaid">
+                            Unpaid
+                        </option>
+
+                        <option value="paid">
+                            Paid
+                        </option>
+
+                    </select>
+
+                </div>
+
+                <button class="add-button" onclick="addPerson()">
+                    + I'M HAVING CHAI
+                </button>
+
+            </section>
+
+
+            <!-- PAYMENT -->
+
+            <section class="payment-card">
+
+                <div class="payment-title">
+                    <span>💸</span>
+
+                    <div>
+                        <p class="eyebrow">CHAI DA HISAB</p>
+                        <h3>Who's collecting?</h3>
+                    </div>
+                </div>
+
+
+                <div class="payment-content">
+
+                    <div class="collector-info">
+
+                        <p class="collector-label">
+                            TODAY'S CHAI CAPTAIN
+                        </p>
+
+                        <h3 id="collector-name">
+                            Rahul Sharma
+                        </h3>
+
+                        <p id="collector-upi">
+                            rahul@upi
+                        </p>
+
+                        <button class="upi-button">
+                            PAY VIA UPI
+                        </button>
+
+                    </div>
+
+
+                    <div class="qr-placeholder">
+                        <span>QR</span>
+                    </div>
+
+                </div>
+
+            </section>
+
+        </div>
+
+    </main>
+
+
+    <script type="module" src="app.js"></script>
+
+</body>
+</html>
