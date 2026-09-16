@@ -7,7 +7,8 @@ import {
     onSnapshot,
     serverTimestamp,
     updateDoc,
-    doc
+    doc,
+    deleteDoc
 } from "./firebase.js";
 
 let currentSession = "morning";
@@ -213,14 +214,28 @@ function renderOrders(orders) {
                 ${escapeHTML(person.name)}
             </div>
 
-            <button
-                class="payment-status ${statusClass}"
-                data-id="${person.id}"
-            >
-                ${status}
-            </button>
+            <div class="person-actions">
+
+                <button
+                    class="payment-status ${statusClass}"
+                    data-id="${person.id}"
+                >
+                    ${status}
+                </button>
+
+                <button
+                    class="remove-button"
+                    data-id="${person.id}"
+                    title="Remove from chai list"
+                >
+                    ×
+                </button>
+
+            </div>
 
         `;
+
+        // Payment button
 
         const paymentButton =
             row.querySelector(".payment-status");
@@ -230,9 +245,22 @@ function renderOrders(orders) {
             () => togglePayment(person)
         );
 
+
+        // Remove button
+
+        const removeButton =
+            row.querySelector(".remove-button");
+
+        removeButton.addEventListener(
+            "click",
+            () => removePerson(person)
+        );
+
+
         list.appendChild(row);
 
     });
+
 
     document.getElementById("people-count").textContent =
         `${orders.length} ${
@@ -242,7 +270,6 @@ function renderOrders(orders) {
         }`;
 
 }
-
 
 // =============================
 // TOGGLE PAYMENT
@@ -279,6 +306,39 @@ async function togglePayment(person) {
 
 }
 
+// =============================
+// REMOVE PERSON
+// =============================
+async function removePerson(person) {
+
+    const confirmed = confirm(
+        `Remove ${person.name} from the chai list?`
+    );
+
+    if (!confirmed) {
+        return;
+    }
+
+    try {
+
+        await deleteDoc(
+            doc(db, "orders", person.id)
+        );
+
+    } catch (error) {
+
+        console.error(
+            "Error removing person:",
+            error
+        );
+
+        alert(
+            "Couldn't remove the person."
+        );
+
+    }
+
+}
 // =============================
 // ADD PERSON
 // =============================
@@ -371,3 +431,37 @@ function escapeHTML(text) {
 // =============================
 
 displayDate();
+
+// =============================
+// COPY UPI ID
+// =============================
+
+document
+    .getElementById("copy-upi-button")
+    .addEventListener("click", async function () {
+
+        const upiId =
+            document.getElementById("collector-upi").textContent.trim();
+
+        try {
+
+            await navigator.clipboard.writeText(upiId);
+
+            this.textContent = "COPIED ✓";
+
+            setTimeout(() => {
+
+                this.textContent = "COPY UPI ID";
+
+            }, 1500);
+
+        } catch (error) {
+
+            console.error(
+                "Failed to copy UPI ID:",
+                error
+            );
+
+        }
+
+    });
